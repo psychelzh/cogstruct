@@ -1,0 +1,51 @@
+future::plan(future.callr::callr)
+check_device <- function(dm) {
+  key <- dm::dm_get_all_pks(dm, "meta") |> pluck("pk_col", 1)
+  if (!has_name(dm::pull_tbl(dm, "data"), "device")) {
+    dm <- dm |> 
+      dm::dm_zoom_to("data") |> 
+      dm::mutate(device = "mouse") |> 
+      dm::dm_update_zoomed()
+  }
+  dm |> 
+    dm::dm_zoom_to("data") |> 
+    dm::group_by(across(all_of(key))) |> 
+    dm::summarise(
+      used_mouse = str_c(device, collapse = "-") |> 
+        str_split("-") |> 
+        map_lgl(~ any(.x == "mouse"))
+    ) |> 
+    dm::dm_insert_zoomed("device_test") |> 
+    dm::dm_select_tbl(-"data")
+}
+games <- tarflow.iquizoo::search_games_mem(config::get("where"))
+tar_option_set(
+  package = c("tidyverse", "preproc.iquizoo", "tarflow.iquizoo"),
+  format = "qs",
+  imports = "preproc.iquizoo"
+)
+targets_data <- tarchetypes::tar_map(
+  values = games,
+  names = game_name_abbr,
+  # major targets
+  tar_target(data, pickup(query_tmpl_data, config_where_single_game)),
+  tar_target(data_parsed, wrangle_data(data, key)),
+  tar_target(device_info, check_device(data_parsed)),
+  tar_target(
+    indices,
+    preproc_data(data_parsed, prep_fun, .input = input, .extra = extra)
+  ),
+  # configurations
+  tar_target(
+    config_where_single_game,
+    insert_where_single_game(config_where, game_id)
+  ),
+  tar_target(
+    input,
+    config::get("input", config = game_name_abbr, file = file_config)
+  ),
+  tar_target(
+    extra,
+    config::get("extra", config = game_name_abbr, file = file_config)
+  )
+)
