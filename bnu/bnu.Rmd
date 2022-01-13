@@ -34,10 +34,37 @@ check_device <- function(dm) {
     dm::summarise(
       used_mouse = str_c(device, collapse = "-") |> 
         str_split("-") |> 
-        map_lgl(~ any(.x == "mouse"))
+        map_lgl(~ any(.x == "mouse")), 
+      .groups = "drop"
     ) |> 
     dm::dm_insert_zoomed("device_test") |> 
     dm::dm_select_tbl(-"data")
+}
+validate_data <- function(dm, name) {
+  key <- dm::dm_get_all_pks(dm, "meta") |> pluck("pk_col", 1)
+  if (name == "LdnTwr") {
+    out <- dm |> 
+      dm::dm_zoom_to("data") |> 
+      dm::group_by(across(all_of(key))) |> 
+      dm::summarise(is_valid = !anyNA(minmove), .groups = "drop") |> 
+      dm::dm_insert_zoomed("validation")
+  } else if (
+    name %in% c("Grid2back", "Paint2back", "Digit3back", "Verbal3back")
+  ) {
+    out <- dm |> 
+      dm::dm_zoom_to("data") |> 
+      dm::group_by(across(all_of(key))) |> 
+      dm::summarise(is_valid = any(type == "lure"), .groups = "drop") |> 
+      dm::dm_insert_zoomed("validation")
+  } else {
+    out <- dm |> 
+      dm::dm_zoom_to("data") |> 
+      dm::group_by(across(all_of(key))) |> 
+      dm::summarise(is_valid = TRUE, .groups = "drop") |> 
+      dm::dm_insert_zoomed("validation")
+  }
+  out |> 
+    dm::dm_select_tbl(-data)
 }
 games <- tarflow.iquizoo::search_games_mem(config::get("where"))
 tar_option_set(
@@ -51,11 +78,12 @@ targets_data <- tarchetypes::tar_map(
   # major targets
   tar_target(data, pickup(query_tmpl_data, config_where_single_game)),
   tar_target(data_parsed, wrangle_data(data, key)),
-  tar_target(device_info, check_device(data_parsed)),
   tar_target(
     indices,
     preproc_data(data_parsed, prep_fun, .input = input, .extra = extra)
   ),
+  tar_target(device_info, check_device(data_parsed)),
+  tar_target(data_validation, validate_data(data_parsed, game_name_abbr)),
   # configurations
   tar_target(
     config_where_single_game,
@@ -94,7 +122,14 @@ list(
   tarchetypes::tar_combine(data, targets_data[[1]]),
   tarchetypes::tar_combine(
     device_info,
-    targets_data[[3]],
+    targets_data[[4]],
+    command = list(!!!.x) |> 
+      map(dm::dm_squash_to_tbl, start = "meta") |> 
+      bind_rows(.id = "source")
+  ),
+  tarchetypes::tar_combine(
+    data_validation,
+    targets_data[[5]],
     command = list(!!!.x) |> 
       map(dm::dm_squash_to_tbl, start = "meta") |> 
       bind_rows(.id = "source")
