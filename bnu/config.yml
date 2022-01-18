@@ -113,8 +113,9 @@ SSTMPro:
   extra: ~
 LocMemA:
   game_name: 宇宙黑洞A
-  prep_fun_name: locmem
-  input: ~
+  prep_fun_name: span
+  input:
+    name_slen: numobject
   extra: ~
 FWSPro:
   game_name: 过目不忘PRO
@@ -141,7 +142,8 @@ FPTPro:
 SCSpan:
   game_name: 蝴蝶照相机
   prep_fun_name: span
-  input: ~
+  input:
+    name_acc: accloc
   extra: ~
 KeepTrack:
   game_name: 密码箱
@@ -330,7 +332,8 @@ RATA:
 OCSpan:
   game_name: 幸运小球
   prep_fun_name: span
-  input: ~
+  input:
+    name_acc: acclet
   extra: ~
 RSpan:
   game_name: 打靶场
@@ -360,4 +363,3 @@ RATB:
   prep_fun_name: countcorrect
   input: ~
   extra: ~
-
