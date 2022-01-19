@@ -10,11 +10,11 @@ editor_options:
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(targets)
-tar_config_set(store = "bnu/_targets")
+tar_config_set(store = here::here("bnu/_targets"))
 ```
 
 ```{r load-data}
-tests_keyboard <- read_lines("config/require_keybord.txt")
+tests_keyboard <- read_lines(here::here("config/require_keybord.txt"))
 validation <- tar_read(device_info) |> 
   mutate(valid_device = !(game_name %in% tests_keyboard & used_mouse)) |> 
   inner_join(tar_read(data_validation)) |> 
@@ -52,7 +52,7 @@ render_content <- function(file, ...) {
 purrr::imap_chr(
   tests_included,
   ~ render_content(
-    file = "archetypes/child_check_index.Rmd",
+    file = here::here("archetypes/child_check_index.Rmd"),
     game_name_abbr = .x,
     game_name = .y
   )
