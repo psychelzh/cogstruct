@@ -822,16 +822,16 @@ test-retest-WxPred
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcompsychelzhcogstructtree8813e1eb15e3e467afa79892fe7886c156264422targetblank8813e1ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/psychelzh/cogstruct/tree/8813e1eb15e3e467afa79892fe7886c156264422" target="_blank">8813e1e</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcompsychelzhcogstructtree76a75d120403d50181cb0dea2338e4c53c753bf6targetblank76a75d1a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/psychelzh/cogstruct/tree/76a75d120403d50181cb0dea2338e4c53c753bf6" target="_blank">76a75d1</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcompsychelzhcogstructtree8813e1eb15e3e467afa79892fe7886c156264422targetblank8813e1ea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcompsychelzhcogstructtree76a75d120403d50181cb0dea2338e4c53c753bf6targetblank76a75d1a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/psychelzh/cogstruct/tree/8813e1eb15e3e467afa79892fe7886c156264422" target="_blank">8813e1e</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/psychelzh/cogstruct/tree/76a75d120403d50181cb0dea2338e4c53c753bf6" target="_blank">76a75d1</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -890,6 +890,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/psychelzh/cogstruct/blob/76a75d120403d50181cb0dea2338e4c53c753bf6/analysis/test_checking.Rmd" target="_blank">76a75d1</a>
+</td>
+<td>
+Liang Zhang
+</td>
+<td>
+2022-01-19
+</td>
+<td>
+wflow_publish("analysis/*.Rmd")
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/psychelzh/cogstruct/94f7d3da6f041c19d410ff54c665dc6711946fea/docs/test_checking.html" target="_blank">94f7d3d</a>
+</td>
+<td>
+Liang Zhang
+</td>
+<td>
+2022-01-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1093,12 +1127,6 @@ indices &lt;- tar_read(indices) |&gt;
     values_from = score
   )
 tests_included &lt;- deframe(distinct(indices, game_name_abbr, game_name))</code></pre>
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
 <pre class="r"><code>render_content &lt;- function(file, ...) {
   knitr::knit(
     text = knitr::knit_expand(file, ...),
@@ -1147,13 +1175,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-CRTPro-1.png" width="523.636363636364" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-CRTPro-1.png" width="523.636363636364" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest" class="section level2">
 <h2>Test-Retest</h2>
@@ -1183,13 +1205,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-CRTPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-CRTPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="捉虫高级简版" class="section level1">
@@ -1228,13 +1244,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-TOVAS-1.png" width="802.909090909091" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-TOVAS-1.png" width="802.909090909091" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-1" class="section level2">
 <h2>Test-Retest</h2>
@@ -1264,13 +1274,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-TOVAS-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-TOVAS-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="塔罗牌" class="section level1">
@@ -1303,13 +1307,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-WxPred-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-WxPred-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-2" class="section level2">
 <h2>Test-Retest</h2>
@@ -1339,13 +1337,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-WxPred-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-WxPred-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="数感" class="section level1">
@@ -1380,13 +1372,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-NsymNCmp-1.png" width="523.636363636364" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-NsymNCmp-1.png" width="523.636363636364" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-3" class="section level2">
 <h2>Test-Retest</h2>
@@ -1416,13 +1402,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-NsymNCmp-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-NsymNCmp-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="数字卡片" class="section level1">
@@ -1458,13 +1438,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-Digit3back-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-Digit3back-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-4" class="section level2">
 <h2>Test-Retest</h2>
@@ -1494,13 +1468,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-Digit3back-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-Digit3back-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="格子卡片" class="section level1">
@@ -1536,13 +1504,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-Grid2back-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-Grid2back-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-5" class="section level2">
 <h2>Test-Retest</h2>
@@ -1572,13 +1534,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-Grid2back-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-Grid2back-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="美术卡片" class="section level1">
@@ -1614,13 +1570,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-Paint2back-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-Paint2back-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-6" class="section level2">
 <h2>Test-Retest</h2>
@@ -1650,13 +1600,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-Paint2back-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-Paint2back-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="文字卡片" class="section level1">
@@ -1692,13 +1636,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-Verbal3back-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-Verbal3back-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-7" class="section level2">
 <h2>Test-Retest</h2>
@@ -1728,13 +1666,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-Verbal3back-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-Verbal3back-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="魔术师高级" class="section level1">
@@ -1770,13 +1702,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-Nback3-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-Nback3-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-8" class="section level2">
 <h2>Test-Retest</h2>
@@ -1806,13 +1732,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-Nback3-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-Nback3-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="变色魔块pro" class="section level1">
@@ -1849,13 +1769,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-StopSigPro-1.png" width="663.272727272727" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-StopSigPro-1.png" width="663.272727272727" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-9" class="section level2">
 <h2>Test-Retest</h2>
@@ -1885,13 +1799,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-StopSigPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-StopSigPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="多彩文字pro" class="section level1">
@@ -1929,13 +1837,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-ColStrpPro-1.png" width="733.090909090909" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-ColStrpPro-1.png" width="733.090909090909" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-10" class="section level2">
 <h2>Test-Retest</h2>
@@ -1965,13 +1867,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-ColStrpPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-ColStrpPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="卡片分类pro" class="section level1">
@@ -2009,13 +1905,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-CardSortPro-1.png" width="733.090909090909" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-CardSortPro-1.png" width="733.090909090909" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-11" class="section level2">
 <h2>Test-Retest</h2>
@@ -2045,13 +1935,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-CardSortPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-CardSortPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="候鸟迁徙pro" class="section level1">
@@ -2095,13 +1979,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-BirdsPro-1.png" width="1152" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-BirdsPro-1.png" width="1152" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-12" class="section level2">
 <h2>Test-Retest</h2>
@@ -2131,13 +2009,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-BirdsPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-BirdsPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="方向临摹" class="section level1">
@@ -2172,13 +2044,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-JLO-1.png" width="523.636363636364" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-JLO-1.png" width="523.636363636364" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-13" class="section level2">
 <h2>Test-Retest</h2>
@@ -2208,13 +2074,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-JLO-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-JLO-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="按图索骥" class="section level1">
@@ -2252,13 +2112,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-HOP-1.png" width="733.090909090909" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-HOP-1.png" width="733.090909090909" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-14" class="section level2">
 <h2>Test-Retest</h2>
@@ -2288,13 +2142,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-HOP-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-HOP-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="萤火虫pro" class="section level1">
@@ -2330,13 +2178,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-MOTPro-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-MOTPro-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-15" class="section level2">
 <h2>Test-Retest</h2>
@@ -2366,13 +2208,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-MOTPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-MOTPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="火眼金睛" class="section level1">
@@ -2405,13 +2241,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-AttSrc-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-AttSrc-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-16" class="section level2">
 <h2>Test-Retest</h2>
@@ -2441,13 +2271,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-AttSrc-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-AttSrc-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="位置记忆pro" class="section level1">
@@ -2483,13 +2307,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-SSTMPro-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-SSTMPro-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-17" class="section level2">
 <h2>Test-Retest</h2>
@@ -2519,13 +2337,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-SSTMPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-SSTMPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="宇宙黑洞" class="section level1">
@@ -2561,13 +2373,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-LocMemStd-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-LocMemStd-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-18" class="section level2">
 <h2>Test-Retest</h2>
@@ -2597,13 +2403,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-LocMemStd-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-LocMemStd-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="过目不忘pro" class="section level1">
@@ -2639,13 +2439,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-FWSPro-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-FWSPro-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-19" class="section level2">
 <h2>Test-Retest</h2>
@@ -2675,13 +2469,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-FWSPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-FWSPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="人工语言-中级" class="section level1">
@@ -2714,13 +2502,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-AscLanMd-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-AscLanMd-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-20" class="section level2">
 <h2>Test-Retest</h2>
@@ -2750,13 +2532,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-AscLanMd-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-AscLanMd-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="各得其所" class="section level1">
@@ -2790,13 +2566,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-LdnTwr-1.png" width="453.818181818182" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-LdnTwr-1.png" width="453.818181818182" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-21" class="section level2">
 <h2>Test-Retest</h2>
@@ -2826,13 +2596,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-LdnTwr-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-LdnTwr-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="连点成画pro" class="section level1">
@@ -2865,13 +2629,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-FPTPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-FPTPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-22" class="section level2">
 <h2>Test-Retest</h2>
@@ -2901,13 +2659,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-FPTPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-FPTPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="蝴蝶照相机" class="section level1">
@@ -2943,13 +2695,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-SCSpan-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-SCSpan-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-23" class="section level2">
 <h2>Test-Retest</h2>
@@ -2979,13 +2725,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-SCSpan-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-SCSpan-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="密码箱" class="section level1">
@@ -3021,13 +2761,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-KeepTrack-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-KeepTrack-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-24" class="section level2">
 <h2>Test-Retest</h2>
@@ -3057,13 +2791,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-KeepTrack-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-KeepTrack-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="超级秒表pro" class="section level1">
@@ -3097,13 +2825,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-SRTPro-1.png" width="453.818181818182" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-SRTPro-1.png" width="453.818181818182" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-25" class="section level2">
 <h2>Test-Retest</h2>
@@ -3133,13 +2855,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-SRTPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-SRTPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="一心二用pro" class="section level1">
@@ -3178,13 +2894,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-DualTaskPro-1.png" width="802.909090909091" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-DualTaskPro-1.png" width="802.909090909091" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-26" class="section level2">
 <h2>Test-Retest</h2>
@@ -3214,13 +2924,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-DualTaskPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-DualTaskPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="连续再认" class="section level1">
@@ -3259,13 +2963,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-ConRec-1.png" width="802.909090909091" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-ConRec-1.png" width="802.909090909091" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-27" class="section level2">
 <h2>Test-Retest</h2>
@@ -3295,13 +2993,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-ConRec-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-ConRec-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="图片记忆" class="section level1">
@@ -3338,13 +3030,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-BPS-1.png" width="663.272727272727" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-BPS-1.png" width="663.272727272727" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-28" class="section level2">
 <h2>Test-Retest</h2>
@@ -3374,13 +3060,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-BPS-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-BPS-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="言语记忆" class="section level1">
@@ -3416,13 +3096,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-DRM-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-DRM-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-29" class="section level2">
 <h2>Test-Retest</h2>
@@ -3452,13 +3126,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-DRM-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-DRM-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="强化学习" class="section level1">
@@ -3491,13 +3159,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-ProbRL-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-ProbRL-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-30" class="section level2">
 <h2>Test-Retest</h2>
@@ -3527,13 +3189,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-ProbRL-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-ProbRL-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="语义判断" class="section level1">
@@ -3572,13 +3228,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-Seman-1.png" width="802.909090909091" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-Seman-1.png" width="802.909090909091" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-31" class="section level2">
 <h2>Test-Retest</h2>
@@ -3608,13 +3258,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-Seman-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-Seman-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="声调判断" class="section level1">
@@ -3653,13 +3297,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-Tone-1.png" width="802.909090909091" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-Tone-1.png" width="802.909090909091" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-32" class="section level2">
 <h2>Test-Retest</h2>
@@ -3689,13 +3327,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-Tone-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-Tone-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="太空飞船pro" class="section level1">
@@ -3733,13 +3365,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-FlkrPro-1.png" width="733.090909090909" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-FlkrPro-1.png" width="733.090909090909" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-33" class="section level2">
 <h2>Test-Retest</h2>
@@ -3769,13 +3395,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-FlkrPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-FlkrPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="察颜观色pro" class="section level1">
@@ -3819,13 +3439,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-FacesPro-1.png" width="1152" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-FacesPro-1.png" width="1152" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-34" class="section level2">
 <h2>Test-Retest</h2>
@@ -3855,13 +3469,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-FacesPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-FacesPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="顺背数pro" class="section level1">
@@ -3897,13 +3505,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-FDSPro-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-FDSPro-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-35" class="section level2">
 <h2>Test-Retest</h2>
@@ -3933,13 +3535,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-FDSPro-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-FDSPro-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="图形推理" class="section level1">
@@ -3972,13 +3568,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-NVR-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-NVR-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-36" class="section level2">
 <h2>Test-Retest</h2>
@@ -4008,13 +3598,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-NVR-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-NVR-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="数字推理" class="section level1">
@@ -4047,13 +3631,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-DR-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-DR-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-37" class="section level2">
 <h2>Test-Retest</h2>
@@ -4083,13 +3661,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-DR-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-DR-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="文字推理" class="section level1">
@@ -4122,13 +3694,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-VR-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-VR-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-38" class="section level2">
 <h2>Test-Retest</h2>
@@ -4158,13 +3724,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-VR-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-VR-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="三维心理旋转测试" class="section level1">
@@ -4197,13 +3757,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-MR3D-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-MR3D-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-39" class="section level2">
 <h2>Test-Retest</h2>
@@ -4233,13 +3787,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-MR3D-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-MR3D-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="时长分辨" class="section level1">
@@ -4272,13 +3820,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-DD-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-DD-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-40" class="section level2">
 <h2>Test-Retest</h2>
@@ -4308,13 +3850,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-DD-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-DD-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="时间顺序判断" class="section level1">
@@ -4347,13 +3883,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-TOJ-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-TOJ-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-41" class="section level2">
 <h2>Test-Retest</h2>
@@ -4383,13 +3913,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-TOJ-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-TOJ-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="节奏感知" class="section level1">
@@ -4422,13 +3946,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-RP-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-RP-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-42" class="section level2">
 <h2>Test-Retest</h2>
@@ -4458,13 +3976,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-RP-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-RP-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="专注大师_中级" class="section level1">
@@ -4497,13 +4009,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-CalcSpdMed-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-CalcSpdMed-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-43" class="section level2">
 <h2>Test-Retest</h2>
@@ -4533,13 +4039,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-CalcSpdMed-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-CalcSpdMed-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="眼耳并用" class="section level1">
@@ -4583,13 +4083,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-Dual2back-1.png" width="1152" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-Dual2back-1.png" width="1152" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-44" class="section level2">
 <h2>Test-Retest</h2>
@@ -4619,13 +4113,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-Dual2back-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-Dual2back-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="变戏法" class="section level1">
@@ -4658,13 +4146,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-AntiSac-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-AntiSac-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-45" class="section level2">
 <h2>Test-Retest</h2>
@@ -4694,13 +4176,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-AntiSac-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-AntiSac-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="舒尔特方格中级" class="section level1">
@@ -4733,13 +4209,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-SchulteMed-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-SchulteMed-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-46" class="section level2">
 <h2>Test-Retest</h2>
@@ -4769,13 +4239,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-SchulteMed-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-SchulteMed-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="欢乐餐厅" class="section level1">
@@ -4808,13 +4272,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-AscMem-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-AscMem-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-47" class="section level2">
 <h2>Test-Retest</h2>
@@ -4844,13 +4302,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-AscMem-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-AscMem-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="登陆月球中级" class="section level1">
@@ -4884,13 +4336,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-NLEMed-1.png" width="453.818181818182" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-NLEMed-1.png" width="453.818181818182" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-48" class="section level2">
 <h2>Test-Retest</h2>
@@ -4920,13 +4366,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-NLEMed-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-NLEMed-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="速算师中级" class="section level1">
@@ -4959,13 +4399,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-CalcMed-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-CalcMed-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-49" class="section level2">
 <h2>Test-Retest</h2>
@@ -4995,13 +4429,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-CalcMed-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-CalcMed-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="图形折叠" class="section level1">
@@ -5034,13 +4462,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-FR-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-FR-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-50" class="section level2">
 <h2>Test-Retest</h2>
@@ -5070,13 +4492,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-FR-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-FR-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="远距离联想" class="section level1">
@@ -5109,13 +4525,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-RAT-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-RAT-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-51" class="section level2">
 <h2>Test-Retest</h2>
@@ -5145,13 +4555,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-RAT-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-RAT-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="幸运小球" class="section level1">
@@ -5187,13 +4591,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-OCSpan-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-OCSpan-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-52" class="section level2">
 <h2>Test-Retest</h2>
@@ -5223,13 +4621,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-OCSpan-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-OCSpan-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="打靶场" class="section level1">
@@ -5265,13 +4657,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-RSpan-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-RSpan-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-53" class="section level2">
 <h2>Test-Retest</h2>
@@ -5301,13 +4687,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-RSpan-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-RSpan-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="雪花收藏家" class="section level1">
@@ -5340,13 +4720,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-DirectSrc-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-DirectSrc-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-54" class="section level2">
 <h2>Test-Retest</h2>
@@ -5376,13 +4750,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-DirectSrc-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-DirectSrc-1.png" width="384" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="我是大厨" class="section level1">
@@ -5418,13 +4786,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
   ) |&gt; 
   select(-user_id) |&gt; 
   GGally::ggpairs()</code></pre>
-<img src="figure/test_checking.Rmd/pairwise-MSynWin-1.png" width="593.454545454545" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/pairwise-MSynWin-1.png" width="593.454545454545" style="display: block; margin: auto;" /></p>
 </div>
 <div id="test-retest-55" class="section level2">
 <h2>Test-Retest</h2>
@@ -5454,13 +4816,7 @@ data_test_retest |&gt;
   ) +
   facet_wrap(~ index_name, ncol = 1, scales = &quot;free&quot;) +
   theme(aspect.ratio = 1)</code></pre>
-<img src="figure/test_checking.Rmd/test-retest-MSynWin-1.png" width="384" style="display: block; margin: auto;" />
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but it won’t be re-run if previous chunks it depends on are updated. If you need to use caching, it is highly recommended to also set <code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the file (in a chunk that is not cached). Alternatively, you can customize the option <code>dependson</code> for each individual chunk that is cached. Using either <code>autodep</code> or <code>dependson</code> will remove this warning. See the <a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+<p><img src="figure/test_checking.Rmd/test-retest-MSynWin-1.png" width="384" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -5491,24 +4847,41 @@ other attached packages:
  [9] ggplot2_3.3.5    tidyverse_1.3.1  workflowr_1.7.0 
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.7        here_1.0.1        lubridate_1.8.0   getPass_0.2-2    
- [5] ps_1.6.0          assertthat_0.2.1  rprojroot_2.0.2   digest_0.6.29    
- [9] utf8_1.2.2        R6_2.5.1          cellranger_1.1.0  backports_1.4.1  
-[13] reprex_2.0.1      evaluate_0.14     httr_1.4.2        pillar_1.6.4     
-[17] rlang_0.99.0.9001 readxl_1.3.1      data.table_1.14.2 rstudioapi_0.13  
-[21] whisker_0.4       callr_3.7.0       jquerylib_0.1.4   rmarkdown_2.11   
-[25] igraph_1.2.11     munsell_0.5.0     broom_0.7.11      compiler_4.1.2   
-[29] httpuv_1.6.5      modelr_0.1.8      xfun_0.29         pkgconfig_2.0.3  
-[33] htmltools_0.5.2   tidyselect_1.1.1  codetools_0.2-18  fansi_1.0.0      
-[37] withr_2.4.3       crayon_1.4.2      tzdb_0.2.0        dbplyr_2.1.1     
-[41] later_1.3.0       grid_4.1.2        jsonlite_1.7.2    gtable_0.3.0     
-[45] lifecycle_1.0.1   DBI_1.1.2         git2r_0.29.0      magrittr_2.0.1   
-[49] scales_1.1.1      cli_3.1.0         stringi_1.7.6     fs_1.5.2         
-[53] promises_1.2.0.1  xml2_1.3.3        bslib_0.3.1       ellipsis_0.3.2   
-[57] generics_0.1.1    vctrs_0.3.8       tools_4.1.2       glue_1.6.0       
-[61] hms_1.1.1         processx_3.5.2    fastmap_1.1.0     yaml_2.2.1       
-[65] colorspace_2.0-2  base64url_1.4     rvest_1.0.2       knitr_1.37       
-[69] haven_2.4.3       sass_0.4.0       </code></pre>
+  [1] minqa_1.2.4         colorspace_2.0-2    ggsignif_0.6.3     
+  [4] ellipsis_0.3.2      rprojroot_2.0.2     fs_1.5.2           
+  [7] rstudioapi_0.13     ggpubr_0.4.0        farver_2.1.0       
+ [10] bit64_4.0.5         fansi_1.0.0         lubridate_1.8.0    
+ [13] xml2_1.3.3          codetools_0.2-18    splines_4.1.2      
+ [16] mnormt_2.0.2        knitr_1.37          jsonlite_1.7.2     
+ [19] nloptr_1.2.2.3      broom_0.7.11        dbplyr_2.1.1       
+ [22] compiler_4.1.2      httr_1.4.2          backports_1.4.1    
+ [25] assertthat_0.2.1    Matrix_1.4-0        fastmap_1.1.0      
+ [28] cli_3.1.0           later_1.3.0         htmltools_0.5.2    
+ [31] tools_4.1.2         igraph_1.2.11       gtable_0.3.0       
+ [34] glue_1.6.0          Rcpp_1.0.7          carData_3.0-5      
+ [37] cellranger_1.1.0    jquerylib_0.1.4     vctrs_0.3.8        
+ [40] nlme_3.1-153        psych_2.1.9         xfun_0.29          
+ [43] ps_1.6.0            lme4_1.1-27.1       rvest_1.0.2        
+ [46] lifecycle_1.0.1     rstatix_0.7.0       getPass_0.2-2      
+ [49] MASS_7.3-54         scales_1.1.1        vroom_1.5.7        
+ [52] hms_1.1.1           promises_1.2.0.1    parallel_4.1.2     
+ [55] RColorBrewer_1.1-2  qs_0.25.2           yaml_2.2.1         
+ [58] sass_0.4.0          reshape_0.8.8       stringi_1.7.6      
+ [61] highr_0.9           boot_1.3-28         rlang_0.99.0.9001  
+ [64] pkgconfig_2.0.3     evaluate_0.14       lattice_0.20-45    
+ [67] labeling_0.4.2      bit_4.0.4           processx_3.5.2     
+ [70] tidyselect_1.1.1    here_1.0.1          GGally_2.1.2       
+ [73] plyr_1.8.6          magrittr_2.0.1      R6_2.5.1           
+ [76] generics_0.1.1      base64url_1.4       DBI_1.1.2          
+ [79] pillar_1.6.4        haven_2.4.3         whisker_0.4        
+ [82] withr_2.4.3         abind_1.4-5         modelr_0.1.8       
+ [85] crayon_1.4.2        car_3.0-12          utf8_1.2.2         
+ [88] tmvnsim_1.0-2       RApiSerialize_0.1.0 tzdb_0.2.0         
+ [91] rmarkdown_2.11      grid_4.1.2          readxl_1.3.1       
+ [94] data.table_1.14.2   callr_3.7.0         git2r_0.29.0       
+ [97] reprex_2.0.1        digest_0.6.29       httpuv_1.6.5       
+[100] RcppParallel_5.1.5  munsell_0.5.0       stringfish_0.15.5  
+[103] bslib_0.3.1        </code></pre>
 </div>
 </div>
 </div>
