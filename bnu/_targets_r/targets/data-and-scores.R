@@ -4,17 +4,18 @@ list(
   targets_data,
   tarchetypes::tar_combine(data, targets_data[[1]]),
   tarchetypes::tar_combine(
+    indices, 
+    targets_data[[3]],
+    command = combine_dm(!!!.x)
+  ),
+  tarchetypes::tar_combine(
     device_info,
     targets_data[[4]],
-    command = list(!!!.x) |> 
-      map(dm::dm_squash_to_tbl, start = "meta") |> 
-      bind_rows(.id = "source")
+    command = combine_dm(!!!.x)
   ),
   tarchetypes::tar_combine(
     data_validation,
     targets_data[[5]],
-    command = list(!!!.x) |> 
-      map(dm::dm_squash_to_tbl, start = "meta") |> 
-      bind_rows(.id = "source")
+    command = combine_dm(!!!.x)
   )
 )

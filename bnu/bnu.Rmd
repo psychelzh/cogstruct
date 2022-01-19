@@ -18,8 +18,7 @@ knitr::opts_chunk$set(echo = TRUE, tar_interactive = FALSE)
 targets::tar_unscript()
 ```
 
-```{targets set-globals, tar_globals=TRUE, include=FALSE}
-future::plan(future.callr::callr)
+```{targets utils, tar_globals=TRUE, include=FALSE}
 check_device <- function(dm) {
   key <- dm::dm_get_all_pks(dm, "meta") |> pluck("pk_col", 1)
   if (!has_name(dm::pull_tbl(dm, "data"), "device")) {
@@ -46,7 +45,7 @@ validate_data <- function(dm, name) {
     out <- dm |> 
       dm::dm_zoom_to("data") |> 
       dm::group_by(across(all_of(key))) |> 
-      dm::summarise(is_valid = !anyNA(minmove), .groups = "drop") |> 
+      dm::summarise(valid_version = !anyNA(minmove), .groups = "drop") |> 
       dm::dm_insert_zoomed("validation")
   } else if (
     name %in% c("Grid2back", "Paint2back", "Digit3back", "Verbal3back")
@@ -54,18 +53,28 @@ validate_data <- function(dm, name) {
     out <- dm |> 
       dm::dm_zoom_to("data") |> 
       dm::group_by(across(all_of(key))) |> 
-      dm::summarise(is_valid = any(type == "lure"), .groups = "drop") |> 
+      dm::summarise(valid_version = any(type == "lure"), .groups = "drop") |> 
       dm::dm_insert_zoomed("validation")
   } else {
     out <- dm |> 
       dm::dm_zoom_to("data") |> 
       dm::group_by(across(all_of(key))) |> 
-      dm::summarise(is_valid = TRUE, .groups = "drop") |> 
+      dm::summarise(valid_version = TRUE, .groups = "drop") |> 
       dm::dm_insert_zoomed("validation")
   }
   out |> 
     dm::dm_select_tbl(-data)
 }
+combine_dm <- function(...) {
+  list(...) |> 
+    map(dm::dm_squash_to_tbl, start = "meta") |> 
+    bind_rows(.id = "source") |> 
+    extract(source, "game_name_abbr", "(?<=_)([^_]+$)")
+}
+```
+
+```{targets set-globals, tar_globals=TRUE, include=FALSE}
+future::plan(future.callr::callr)
 games <- tarflow.iquizoo::search_games_mem(config::get("where"))
 tar_option_set(
   package = c("tidyverse", "preproc.iquizoo", "tarflow.iquizoo"),
@@ -121,18 +130,19 @@ list(
   targets_data,
   tarchetypes::tar_combine(data, targets_data[[1]]),
   tarchetypes::tar_combine(
+    indices, 
+    targets_data[[3]],
+    command = combine_dm(!!!.x)
+  ),
+  tarchetypes::tar_combine(
     device_info,
     targets_data[[4]],
-    command = list(!!!.x) |> 
-      map(dm::dm_squash_to_tbl, start = "meta") |> 
-      bind_rows(.id = "source")
+    command = combine_dm(!!!.x)
   ),
   tarchetypes::tar_combine(
     data_validation,
     targets_data[[5]],
-    command = list(!!!.x) |> 
-      map(dm::dm_squash_to_tbl, start = "meta") |> 
-      bind_rows(.id = "source")
+    command = combine_dm(!!!.x)
   )
 )
 ```
