@@ -383,7 +383,7 @@ div.tocify {
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>cogstruct/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>cogstruct/analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -468,16 +468,16 @@ This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysi
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcompsychelzhcogstructtree02fac49d826853167100e23a81a92b05f191acd6targetblank02fac49a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/psychelzh/cogstruct/tree/02fac49d826853167100e23a81a92b05f191acd6" target="_blank">02fac49</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcompsychelzhcogstructtreece3f503a1d915865e9b84c6fdffcd67b0da15901targetblankce3f503a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/psychelzh/cogstruct/tree/ce3f503a1d915865e9b84c6fdffcd67b0da15901" target="_blank">ce3f503</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcompsychelzhcogstructtree02fac49d826853167100e23a81a92b05f191acd6targetblank02fac49a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcompsychelzhcogstructtreece3f503a1d915865e9b84c6fdffcd67b0da15901targetblankce3f503a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/psychelzh/cogstruct/tree/02fac49d826853167100e23a81a92b05f191acd6" target="_blank">02fac49</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/psychelzh/cogstruct/tree/ce3f503a1d915865e9b84c6fdffcd67b0da15901" target="_blank">ce3f503</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -495,11 +495,15 @@ Ignored files:
 
 Untracked files:
     Untracked:  _targets.yaml
+    Untracked:  analysis/_targets.yaml
     Untracked:  archetypes/
     Untracked:  bnu/config/
     Untracked:  bnu/diagnose.Rmd
     Untracked:  config/
     Untracked:  figure/
+
+Unstaged changes:
+    Modified:   _workflowr.yml
 
 </code></pre>
 <p>
@@ -543,6 +547,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/psychelzh/cogstruct/blob/ce3f503a1d915865e9b84c6fdffcd67b0da15901/analysis/test_checking.Rmd" target="_blank">ce3f503</a>
+</td>
+<td>
+Liang Zhang
+</td>
+<td>
+2022-01-19
+</td>
+<td>
+wflow_publish("analysis/test_checking.Rmd")
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/psychelzh/cogstruct/22b90294de3d17bc236846690a407cd85efefa1e/docs/test_checking.html" target="_blank">22b9029</a>
+</td>
+<td>
+Liang Zhang
+</td>
+<td>
+2022-01-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/psychelzh/cogstruct/blob/02fac49d826853167100e23a81a92b05f191acd6/analysis/test_checking.Rmd" target="_blank">02fac49</a>
 </td>
 <td>
@@ -562,7 +600,7 @@ wflow_publish("analysis/test_checking.Rmd")
 </div>
 </div>
 </div>
-<pre class="r"><code>tests_keyboard &lt;- read_lines(&quot;config/require_keybord.txt&quot;)
+<pre class="r"><code>tests_keyboard &lt;- read_lines(here::here(&quot;config/require_keybord.txt&quot;))
 validation &lt;- tar_read(device_info) |&gt; 
   mutate(valid_device = !(game_name %in% tests_keyboard &amp; used_mouse)) |&gt; 
   inner_join(tar_read(data_validation)) |&gt; 
@@ -601,7 +639,7 @@ validation &lt;- tar_read(device_info) |&gt;
 purrr::imap_chr(
   tests_included,
   ~ render_content(
-    file = &quot;archetypes/child_check_index.Rmd&quot;,
+    file = here::here(&quot;archetypes/child_check_index.Rmd&quot;),
     game_name_abbr = .x,
     game_name = .y
   )
@@ -4360,40 +4398,41 @@ other attached packages:
  [9] ggplot2_3.3.5    tidyverse_1.3.1  workflowr_1.7.0 
 
 loaded via a namespace (and not attached):
-  [1] nlme_3.1-153        fs_1.5.2            lubridate_1.8.0    
-  [4] bit64_4.0.5         RColorBrewer_1.1-2  httr_1.4.2         
-  [7] rprojroot_2.0.2     tools_4.1.2         backports_1.4.1    
- [10] bslib_0.3.1         utf8_1.2.2          R6_2.5.1           
- [13] DBI_1.1.2           colorspace_2.0-2    withr_2.4.3        
- [16] mnormt_2.0.2        tidyselect_1.1.1    GGally_2.1.2       
- [19] processx_3.5.2      bit_4.0.4           compiler_4.1.2     
- [22] git2r_0.29.0        cli_3.1.0           rvest_1.0.2        
- [25] xml2_1.3.3          labeling_0.4.2      stringfish_0.15.5  
- [28] sass_0.4.0          scales_1.1.1        psych_2.1.9        
- [31] callr_3.7.0         digest_0.6.29       minqa_1.2.4        
- [34] rmarkdown_2.11      pkgconfig_2.0.3     htmltools_0.5.2    
- [37] lme4_1.1-27.1       highr_0.9           dbplyr_2.1.1       
- [40] fastmap_1.1.0       rlang_0.99.0.9001   readxl_1.3.1       
- [43] rstudioapi_0.13     farver_2.1.0        jquerylib_0.1.4    
- [46] generics_0.1.1      RApiSerialize_0.1.0 jsonlite_1.7.2     
- [49] vroom_1.5.7         car_3.0-12          magrittr_2.0.1     
- [52] Matrix_1.4-0        Rcpp_1.0.7          munsell_0.5.0      
- [55] fansi_1.0.0         abind_1.4-5         lifecycle_1.0.1    
- [58] stringi_1.7.6       whisker_0.4         yaml_2.2.1         
- [61] carData_3.0-5       MASS_7.3-54         plyr_1.8.6         
- [64] grid_4.1.2          parallel_4.1.2      promises_1.2.0.1   
- [67] crayon_1.4.2        lattice_0.20-45     splines_4.1.2      
- [70] haven_2.4.3         hms_1.1.1           tmvnsim_1.0-2      
- [73] knitr_1.37          ps_1.6.0            pillar_1.6.4       
- [76] ggpubr_0.4.0        igraph_1.2.11       boot_1.3-28        
- [79] ggsignif_0.6.3      base64url_1.4       codetools_0.2-18   
- [82] reprex_2.0.1        glue_1.6.0          evaluate_0.14      
- [85] getPass_0.2-2       data.table_1.14.2   RcppParallel_5.1.5 
- [88] modelr_0.1.8        nloptr_1.2.2.3      vctrs_0.3.8        
- [91] tzdb_0.2.0          httpuv_1.6.5        cellranger_1.1.0   
- [94] gtable_0.3.0        reshape_0.8.8       qs_0.25.2          
- [97] assertthat_0.2.1    xfun_0.29           broom_0.7.11       
-[100] rstatix_0.7.0       later_1.3.0         ellipsis_0.3.2     </code></pre>
+  [1] minqa_1.2.4         colorspace_2.0-2    ggsignif_0.6.3     
+  [4] ellipsis_0.3.2      rprojroot_2.0.2     fs_1.5.2           
+  [7] rstudioapi_0.13     ggpubr_0.4.0        farver_2.1.0       
+ [10] bit64_4.0.5         fansi_1.0.0         lubridate_1.8.0    
+ [13] xml2_1.3.3          codetools_0.2-18    splines_4.1.2      
+ [16] mnormt_2.0.2        knitr_1.37          jsonlite_1.7.2     
+ [19] nloptr_1.2.2.3      broom_0.7.11        dbplyr_2.1.1       
+ [22] compiler_4.1.2      httr_1.4.2          backports_1.4.1    
+ [25] assertthat_0.2.1    Matrix_1.4-0        fastmap_1.1.0      
+ [28] cli_3.1.0           later_1.3.0         htmltools_0.5.2    
+ [31] tools_4.1.2         igraph_1.2.11       gtable_0.3.0       
+ [34] glue_1.6.0          Rcpp_1.0.7          carData_3.0-5      
+ [37] cellranger_1.1.0    jquerylib_0.1.4     vctrs_0.3.8        
+ [40] nlme_3.1-153        psych_2.1.9         xfun_0.29          
+ [43] ps_1.6.0            lme4_1.1-27.1       rvest_1.0.2        
+ [46] lifecycle_1.0.1     rstatix_0.7.0       getPass_0.2-2      
+ [49] MASS_7.3-54         scales_1.1.1        vroom_1.5.7        
+ [52] hms_1.1.1           promises_1.2.0.1    parallel_4.1.2     
+ [55] RColorBrewer_1.1-2  qs_0.25.2           yaml_2.2.1         
+ [58] sass_0.4.0          reshape_0.8.8       stringi_1.7.6      
+ [61] highr_0.9           boot_1.3-28         rlang_0.99.0.9001  
+ [64] pkgconfig_2.0.3     evaluate_0.14       lattice_0.20-45    
+ [67] labeling_0.4.2      bit_4.0.4           processx_3.5.2     
+ [70] tidyselect_1.1.1    here_1.0.1          GGally_2.1.2       
+ [73] plyr_1.8.6          magrittr_2.0.1      R6_2.5.1           
+ [76] generics_0.1.1      base64url_1.4       DBI_1.1.2          
+ [79] pillar_1.6.4        haven_2.4.3         whisker_0.4        
+ [82] withr_2.4.3         abind_1.4-5         modelr_0.1.8       
+ [85] crayon_1.4.2        car_3.0-12          utf8_1.2.2         
+ [88] tmvnsim_1.0-2       RApiSerialize_0.1.0 tzdb_0.2.0         
+ [91] rmarkdown_2.11      grid_4.1.2          readxl_1.3.1       
+ [94] data.table_1.14.2   callr_3.7.0         git2r_0.29.0       
+ [97] reprex_2.0.1        digest_0.6.29       httpuv_1.6.5       
+[100] RcppParallel_5.1.5  munsell_0.5.0       stringfish_0.15.5  
+[103] bslib_0.3.1        </code></pre>
 </div>
 </div>
 </div>
