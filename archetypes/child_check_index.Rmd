@@ -4,7 +4,7 @@
 data <- indices |> 
   filter(
     game_name_abbr == "{{game_name_abbr}}",
-    across(contains("test"), is.finite),
+    across(contains("test"), ~ !is.infinite(.x)),
     !(is.na(test) & is.na(retest))
   )
 n_indices <- n_distinct(data$index_name)
@@ -19,7 +19,7 @@ n_indices <- n_distinct(data$index_name)
 
 ## Pairwise Correlation of indices
 
-```{r pairwise-{{game_name_abbr}}, fig.height=(6 * n_indices + 27) / 11, fig.width=(8 * n_indices + 36) / 11}
+```{r pairwise-{{game_name_abbr}}, cache=TRUE, fig.height=(6 * n_indices + 27) / 11, fig.width=(8 * n_indices + 36) / 11}
 data |> 
   pivot_wider(
     id_cols = user_id,
@@ -32,12 +32,13 @@ data |>
 
 ## Test-Retest
 
-```{r test-retest-{{game_name_abbr}}, fig.height=4 * n_indices, fig.width=4}
+```{r test-retest-{{game_name_abbr}}, cache=TRUE, fig.height=4 * n_indices, fig.width=4}
 data_test_retest <- drop_na(data)
 reliability <- data_test_retest |> 
   group_by(index_name) |> 
   group_modify(
     ~ tibble(
+      n = nrow(.x),
       icc = .x |> 
         select(contains("test")) |> 
         psych::ICC() |> 
@@ -52,7 +53,7 @@ data_test_retest |>
     data = reliability,
     aes(
       x = -Inf, y = Inf, 
-      label = str_glue("r = {round(r, 2)}\nicc = {round(icc, 2)}")
+      label = str_glue("N = {n}\nr = {round(r, 2)}\nicc = {round(icc, 2)}")
     ),
     hjust = -0.1, vjust = 1.1
   ) +
