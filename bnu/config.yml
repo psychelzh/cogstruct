@@ -111,7 +111,7 @@ SSTMPro:
   prep_fun_name: span
   input: ~
   extra: ~
-LocMemA:
+LocMemStd:
   game_name: 宇宙黑洞A
   prep_fun_name: span
   input:
@@ -172,7 +172,7 @@ BPSA:
   prep_fun_name: bps
   input: ~
   extra: ~
-DRM:
+DRMA:
   game_name: 言语记忆A
   prep_fun_name: drm
   input: ~
