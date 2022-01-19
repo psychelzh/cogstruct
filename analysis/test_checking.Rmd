@@ -1,5 +1,5 @@
 ---
-title: "test_checking"
+title: "Test Performance Checking"
 author: "Liang Zhang"
 date: "2022-01-18"
 output: 
@@ -12,6 +12,7 @@ editor_options:
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(targets)
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 tar_config_set(store = here::here("bnu/_targets"))
 ```
 
