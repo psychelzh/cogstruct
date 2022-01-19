@@ -7,4 +7,4 @@ editor_options:
   chunk_output_type: console
 ---
 
-Describe your project.
+Hi, we are students from Beijing Normal University and trying to decipher cognitive structure from a large scale of tests measuring on a large scale of participants. This is the major project updating website.

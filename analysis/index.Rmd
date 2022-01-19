@@ -8,4 +8,6 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+Welcome to my research website. Currently, the analysis are as follows:
+
+* [Participants' performance checking](test_checking.html).
