@@ -35,6 +35,7 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
@@ -230,6 +231,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -347,6 +351,14 @@ div.tocify {
 </div><!--/.navbar -->
 
 <div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
 
@@ -468,16 +480,16 @@ This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a> analysi
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcompsychelzhcogstructtreece3f503a1d915865e9b84c6fdffcd67b0da15901targetblankce3f503a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/psychelzh/cogstruct/tree/ce3f503a1d915865e9b84c6fdffcd67b0da15901" target="_blank">ce3f503</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcompsychelzhcogstructtree5afb06205cd5ffb11e54168f03af16093347e8d8targetblank5afb062a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/psychelzh/cogstruct/tree/5afb06205cd5ffb11e54168f03af16093347e8d8" target="_blank">5afb062</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcompsychelzhcogstructtreece3f503a1d915865e9b84c6fdffcd67b0da15901targetblankce3f503a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcompsychelzhcogstructtree5afb06205cd5ffb11e54168f03af16093347e8d8targetblank5afb062a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/psychelzh/cogstruct/tree/ce3f503a1d915865e9b84c6fdffcd67b0da15901" target="_blank">ce3f503</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/psychelzh/cogstruct/tree/5afb06205cd5ffb11e54168f03af16093347e8d8" target="_blank">5afb062</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -486,6 +498,8 @@ Note that you need to be careful to ensure that all relevant files for the analy
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    _targets.yaml
+    Ignored:    analysis/_targets.yaml
     Ignored:    bnu/_targets/meta/process
     Ignored:    bnu/_targets/meta/progress
     Ignored:    bnu/_targets/objects/
@@ -494,16 +508,8 @@ Ignored files:
     Ignored:    bnu/images/
 
 Untracked files:
-    Untracked:  _targets.yaml
-    Untracked:  analysis/_targets.yaml
-    Untracked:  archetypes/
     Untracked:  bnu/config/
     Untracked:  bnu/diagnose.Rmd
-    Untracked:  config/
-    Untracked:  figure/
-
-Unstaged changes:
-    Modified:   _workflowr.yml
 
 </code></pre>
 <p>
@@ -542,6 +548,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/psychelzh/cogstruct/blob/5afb06205cd5ffb11e54168f03af16093347e8d8/analysis/test_checking.Rmd" target="_blank">5afb062</a>
+</td>
+<td>
+Liang Zhang
+</td>
+<td>
+2022-01-19
+</td>
+<td>
+wflow_publish("analysis/*.Rmd")
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/psychelzh/cogstruct/ddaae0391e317683d7e6d6db6b51a4020aabe393/docs/test_checking.html" target="_blank">ddaae03</a>
+</td>
+<td>
+Liang Zhang
+</td>
+<td>
+2022-01-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -659,7 +699,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: CRTPro</li>
-<li>Sample Size: 126</li>
+<li>Sample Size: 42</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -727,7 +767,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: TOVAS</li>
-<li>Sample Size: 329</li>
+<li>Sample Size: 47</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -859,7 +899,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: NsymNCmp</li>
-<li>Sample Size: 141</li>
+<li>Sample Size: 47</li>
 <li>Index Names:
 <ul>
 <li>pc</li>
@@ -924,7 +964,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: Digit3back</li>
-<li>Sample Size: 160</li>
+<li>Sample Size: 40</li>
 <li>Index Names:
 <ul>
 <li>pc</li>
@@ -992,7 +1032,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: Grid2back</li>
-<li>Sample Size: 152</li>
+<li>Sample Size: 38</li>
 <li>Index Names:
 <ul>
 <li>pc</li>
@@ -1059,7 +1099,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: Paint2back</li>
-<li>Sample Size: 160</li>
+<li>Sample Size: 40</li>
 <li>Index Names:
 <ul>
 <li>pc</li>
@@ -1126,7 +1166,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: Verbal3back</li>
-<li>Sample Size: 148</li>
+<li>Sample Size: 37</li>
 <li>Index Names:
 <ul>
 <li>pc</li>
@@ -1194,7 +1234,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: Nback3</li>
-<li>Sample Size: 188</li>
+<li>Sample Size: 47</li>
 <li>Index Names:
 <ul>
 <li>pc</li>
@@ -1259,7 +1299,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: StopSigPro</li>
-<li>Sample Size: 225</li>
+<li>Sample Size: 45</li>
 <li>Index Names:
 <ul>
 <li>rt_nth</li>
@@ -1326,7 +1366,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: ColStrpPro</li>
-<li>Sample Size: 282</li>
+<li>Sample Size: 47</li>
 <li>Index Names:
 <ul>
 <li>mrt_inc</li>
@@ -1395,7 +1435,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: CardSortPro</li>
-<li>Sample Size: 258</li>
+<li>Sample Size: 43</li>
 <li>Index Names:
 <ul>
 <li>mrt_repeat</li>
@@ -1463,7 +1503,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: BirdsPro</li>
-<li>Sample Size: 552</li>
+<li>Sample Size: 46</li>
 <li>Index Names:
 <ul>
 <li>mrt_inc</li>
@@ -1538,7 +1578,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: JLO</li>
-<li>Sample Size: 135</li>
+<li>Sample Size: 45</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -1605,7 +1645,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: HOP</li>
-<li>Sample Size: 276</li>
+<li>Sample Size: 46</li>
 <li>Index Names:
 <ul>
 <li>mean_dist_err_allo</li>
@@ -1672,7 +1712,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: MOTPro</li>
-<li>Sample Size: 180</li>
+<li>Sample Size: 45</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -1799,7 +1839,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: SSTMPro</li>
-<li>Sample Size: 180</li>
+<li>Sample Size: 45</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -1864,7 +1904,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: LocMemStd</li>
-<li>Sample Size: 196</li>
+<li>Sample Size: 49</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -1931,7 +1971,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: FWSPro</li>
-<li>Sample Size: 180</li>
+<li>Sample Size: 45</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -2061,7 +2101,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: LdnTwr</li>
-<li>Sample Size: 92</li>
+<li>Sample Size: 46</li>
 <li>Index Names:
 <ul>
 <li>prop_perfect</li>
@@ -2188,7 +2228,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: SCSpan</li>
-<li>Sample Size: 180</li>
+<li>Sample Size: 45</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -2255,7 +2295,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: KeepTrack</li>
-<li>Sample Size: 180</li>
+<li>Sample Size: 45</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -2320,7 +2360,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: SRTPro</li>
-<li>Sample Size: 102</li>
+<li>Sample Size: 51</li>
 <li>Index Names:
 <ul>
 <li>mrt</li>
@@ -2383,7 +2423,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: DualTaskPro</li>
-<li>Sample Size: 350</li>
+<li>Sample Size: 50</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -2451,7 +2491,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: ConRec</li>
-<li>Sample Size: 350</li>
+<li>Sample Size: 50</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -2522,7 +2562,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: BPS</li>
-<li>Sample Size: 250</li>
+<li>Sample Size: 50</li>
 <li>Index Names:
 <ul>
 <li>pc</li>
@@ -2590,7 +2630,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: DRM</li>
-<li>Sample Size: 200</li>
+<li>Sample Size: 50</li>
 <li>Index Names:
 <ul>
 <li>tm_dprime</li>
@@ -2718,7 +2758,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: Seman</li>
-<li>Sample Size: 343</li>
+<li>Sample Size: 49</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -2787,7 +2827,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: Tone</li>
-<li>Sample Size: 343</li>
+<li>Sample Size: 49</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -2855,7 +2895,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: FlkrPro</li>
-<li>Sample Size: 300</li>
+<li>Sample Size: 50</li>
 <li>Index Names:
 <ul>
 <li>mrt_inc</li>
@@ -2922,7 +2962,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: FacesPro</li>
-<li>Sample Size: 600</li>
+<li>Sample Size: 50</li>
 <li>Index Names:
 <ul>
 <li>mrt_inc</li>
@@ -2997,7 +3037,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: FDSPro</li>
-<li>Sample Size: 196</li>
+<li>Sample Size: 49</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -3562,7 +3602,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: Dual2back</li>
-<li>Sample Size: 431</li>
+<li>Sample Size: 36</li>
 <li>Index Names:
 <ul>
 <li>pc_aud</li>
@@ -3866,7 +3906,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: NLEMed</li>
-<li>Sample Size: 70</li>
+<li>Sample Size: 35</li>
 <li>Index Names:
 <ul>
 <li>mean_abs_err</li>
@@ -4115,7 +4155,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: OCSpan</li>
-<li>Sample Size: 140</li>
+<li>Sample Size: 35</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -4180,7 +4220,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: RSpan</li>
-<li>Sample Size: 138</li>
+<li>Sample Size: 35</li>
 <li>Index Names:
 <ul>
 <li>nc</li>
@@ -4318,7 +4358,7 @@ n_indices &lt;- n_distinct(data$index_name)</code></pre>
 <h2>Basic Information</h2>
 <ul>
 <li>Abbreviation: MSynWin</li>
-<li>Sample Size: 140</li>
+<li>Sample Size: 35</li>
 <li>Index Names:
 <ul>
 <li>score_total</li>
@@ -4486,6 +4526,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {
