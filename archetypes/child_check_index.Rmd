@@ -1,0 +1,61 @@
+# {{game_name}}
+
+```{r extract-data-{{game_name_abbr}}}
+data <- indices |> 
+  filter(
+    game_name_abbr == "{{game_name_abbr}}",
+    across(contains("test"), is.finite),
+    !(is.na(test) & is.na(retest))
+  )
+n_indices <- n_distinct(data$index_name)
+```
+
+## Basic Information
+
+* Abbreviation: {{game_name_abbr}}
+* Sample Size: `r n_distinct(data$user_id)`
+* Index Names: 
+`r str_c(str_c("  * ", unique(data$index_name)), collapse = "\n")`
+
+## Pairwise Correlation of indices
+
+```{r pairwise-{{game_name_abbr}}, fig.height=(6 * n_indices + 27) / 11, fig.width=(8 * n_indices + 36) / 11}
+data |> 
+  pivot_wider(
+    id_cols = user_id,
+    names_from = index_name, 
+    values_from = test
+  ) |> 
+  select(-user_id) |> 
+  GGally::ggpairs()
+```
+
+## Test-Retest
+
+```{r test-retest-{{game_name_abbr}}, fig.height=4 * n_indices, fig.width=4}
+data_test_retest <- drop_na(data)
+reliability <- data_test_retest |> 
+  group_by(index_name) |> 
+  group_modify(
+    ~ tibble(
+      icc = .x |> 
+        select(contains("test")) |> 
+        psych::ICC() |> 
+        pluck("results", "ICC", 3),
+      r = cor(.x$test, .x$retest)
+    )
+  ) |> 
+  ungroup()
+data_test_retest |> 
+  ggpubr::ggscatter("test", "retest") +
+  geom_text(
+    data = reliability,
+    aes(
+      x = -Inf, y = Inf, 
+      label = str_glue("r = {round(r, 2)}\nicc = {round(icc, 2)}")
+    ),
+    hjust = -0.1, vjust = 1.1
+  ) +
+  facet_wrap(~ index_name, ncol = 1, scales = "free") +
+  theme(aspect.ratio = 1)
+```
