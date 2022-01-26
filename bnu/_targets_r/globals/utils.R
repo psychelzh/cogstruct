@@ -50,3 +50,30 @@ combine_dm <- function(...) {
     bind_rows(.id = "source") |> 
     extract(source, "game_name_abbr", "(?<=_)([^_]+$)")
 }
+clean_indices <- function(indices, file_keyboard, data_validation, device_info) {
+  tests_keyboard <- read_lines(file_keyboard)
+  validation <- device_info |> 
+    mutate(valid_device = !(game_name %in% tests_keyboard & used_mouse)) |> 
+    inner_join(data_validation) |> 
+    filter(valid_device & valid_version) |> 
+    group_by(user_id, game_name) |> 
+    filter(
+      if_else(
+        str_detect(game_name_abbr, "[A|B]$"), 
+        row_number(desc(game_time)) == 1,
+        row_number(desc(game_time)) <= 2
+      )
+    ) |> 
+    ungroup()
+  indices |> 
+    semi_join(validation) |> 
+    mutate(across(starts_with("game_name"), ~ str_remove(.x, "[A|B]$"))) |> 
+    group_by(user_id, game_name_abbr, game_name, index_name) |> 
+    mutate(occasion = recode(row_number(game_time), `1` = "test", `2` = "retest")) |> 
+    ungroup() |> 
+    pivot_wider(
+      id_cols = c(user_id, game_name, game_name_abbr, index_name), 
+      names_from = occasion,
+      values_from = score
+    )
+}
