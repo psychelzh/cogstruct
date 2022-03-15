@@ -19,7 +19,7 @@ n_indices <- n_distinct(data$index_name)
 
 ## Pairwise Correlation of indices
 
-```{r pairwise-{{game_name_abbr}}, cache=TRUE, fig.height=(6 * n_indices + 27) / 11, fig.width=(8 * n_indices + 36) / 11}
+```{r pairwise-{{game_name_abbr}}, fig.height=(6 * n_indices + 27) / 11, fig.width=(8 * n_indices + 36) / 11}
 data |> 
   pivot_wider(
     id_cols = user_id,
@@ -32,7 +32,7 @@ data |>
 
 ## Test-Retest
 
-```{r test-retest-{{game_name_abbr}}, cache=TRUE, fig.height=4 * n_indices, fig.width=4}
+```{r test-retest-{{game_name_abbr}}, fig.height=4 * n_indices, fig.width=4}
 data_test_retest <- drop_na(data)
 reliability <- data_test_retest |> 
   group_by(index_name) |> 
@@ -42,7 +42,7 @@ reliability <- data_test_retest |>
       icc = .x |> 
         select(contains("test")) |> 
         psych::ICC() |> 
-        pluck("results", "ICC", 3),
+        pluck("results", "ICC", 2),
       r = cor(.x$test, .x$retest)
     )
   ) |> 
