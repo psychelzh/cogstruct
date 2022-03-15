@@ -1,8 +1,8 @@
 ---
-title: "Test Performance Checking"
+title: "Test retest for pilot in SICNU"
 author: "Liang Zhang"
-date: "2022-01-18"
-output: 
+date: "2022-03-15"
+output:
   workflowr::wflow_html:
     code_folding: hide
 editor_options:
@@ -13,7 +13,7 @@ editor_options:
 library(tidyverse)
 library(targets)
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, autodep = TRUE)
-tar_config_set(store = here::here("bnu/_targets"))
+tar_config_set(store = here::here("sicnu_pilot/_targets"))
 ```
 
 ```{r load-data}
