@@ -1,61 +1,38 @@
-check_device <- function(dm) {
-  key <- dm::dm_get_all_pks(dm, "meta") |> pluck("pk_col", 1)
-  if (!has_name(dm::pull_tbl(dm, "data"), "device")) {
-    dm <- dm |> 
-      dm::dm_zoom_to("data") |> 
-      dm::mutate(device = "mouse") |> 
-      dm::dm_update_zoomed()
+check_used_mouse <- function(raw_parsed, ...) {
+  if (!has_name(raw_parsed, "device")) {
+    return(TRUE)
   }
-  dm |> 
-    dm::dm_zoom_to("data") |> 
-    dm::group_by(across(all_of(key))) |> 
-    dm::summarise(
-      used_mouse = str_c(device, collapse = "-") |> 
-        str_split("-") |> 
-        map_lgl(~ any(.x == "mouse")), 
-      .groups = "drop"
-    ) |> 
-    dm::dm_insert_zoomed("device_test") |> 
-    dm::dm_select_tbl(-"data")
+  raw_parsed$device |> 
+    str_c(collapse = "-") |> 
+    str_split("-") |> 
+    map_lgl(~ any(.x == "mouse"))
 }
-validate_data <- function(dm, name) {
-  key <- dm::dm_get_all_pks(dm, "meta") |> pluck("pk_col", 1)
+check_version <- function(raw_parsed, name, ...) {
   if (name == "LdnTwr") {
-    out <- dm |> 
-      dm::dm_zoom_to("data") |> 
-      dm::group_by(across(all_of(key))) |> 
-      dm::summarise(valid_version = !anyNA(minmove), .groups = "drop") |> 
-      dm::dm_insert_zoomed("validation")
-  } else if (
-    name %in% c("Grid2back", "Paint2back", "Digit3back", "Verbal3back")
-  ) {
-    out <- dm |> 
-      dm::dm_zoom_to("data") |> 
-      dm::group_by(across(all_of(key))) |> 
-      dm::summarise(valid_version = any(type == "lure"), .groups = "drop") |> 
-      dm::dm_insert_zoomed("validation")
-  } else {
-    out <- dm |> 
-      dm::dm_zoom_to("data") |> 
-      dm::group_by(across(all_of(key))) |> 
-      dm::summarise(valid_version = TRUE, .groups = "drop") |> 
-      dm::dm_insert_zoomed("validation")
+    return(has_name(raw_parsed, "minmove"))
+  } 
+  if (name %in% c("Grid2back", "Paint2back", "Digit3back", "Verbal3back")) {
+    return(any(raw_parsed$type == "lure"))
   }
-  out |> 
-    dm::dm_select_tbl(-data)
+  return(TRUE)
 }
-combine_dm <- function(...) {
-  list(...) |> 
-    map(dm::dm_squash_to_tbl, start = "meta") |> 
-    bind_rows(.id = "source") |> 
-    extract(source, "game_name_abbr", "(?<=_)([^_]+$)")
+validate_raw_parsed <- function(data_parsed, predicate, out, name = NULL) {
+  data_parsed |> 
+    mutate(
+      "{out}" := map_lgl(
+        raw_parsed,
+        predicate,
+        name = name
+      ),
+      .keep = "unused"
+    )
 }
-clean_indices <- function(indices, file_keyboard, data_validation, device_info) {
-  tests_keyboard <- read_lines(file_keyboard)
-  validation <- device_info |> 
-    mutate(valid_device = !(game_name %in% tests_keyboard & used_mouse)) |> 
-    inner_join(data_validation) |> 
+clean_indices <- function(indices, games_req_kb, data_version, data_mouse) {
+  validation <- data_mouse |> 
+    mutate(valid_device = !(game_name %in% games_req_kb & used_mouse)) |> 
+    inner_join(data_version) |> 
     filter(valid_device & valid_version) |> 
+    left_join(data.iquizoo::game_info, by = c("game_id", "game_name")) |> 
     group_by(user_id, game_name) |> 
     filter(
       if_else(
@@ -66,7 +43,8 @@ clean_indices <- function(indices, file_keyboard, data_validation, device_info) 
     ) |> 
     ungroup()
   indices |> 
-    semi_join(validation) |> 
+    right_join(validation) |> 
+    unnest(indices) |> 
     group_by(user_id, game_name_abbr, game_name, index_name) |> 
     mutate(
       occasion = case_when(
@@ -80,7 +58,7 @@ clean_indices <- function(indices, file_keyboard, data_validation, device_info) 
     ungroup() |> 
     mutate(across(starts_with("game_name"), ~ str_remove(.x, "[A|B]$"))) |>
     pivot_wider(
-      id_cols = c(user_id, game_name, game_name_abbr, index_name), 
+      id_cols = c(user_id, game_name, game_name_abbr, game_version, index_name), 
       names_from = occasion,
       values_from = score
     )

@@ -10,13 +10,26 @@ targets_data <- tarchetypes::tar_map(
   names = game_name_abbr,
   # major targets
   tar_target(data, pickup(query_tmpl_data, config_where_single_game)),
-  tar_target(data_parsed, wrangle_data(data, key)),
+  tar_target(data_parsed, wrangle_data(data)),
   tar_target(
     indices,
     preproc_data(data_parsed, prep_fun, .input = input, .extra = extra)
   ),
-  tar_target(device_info, check_device(data_parsed)),
-  tar_target(data_validation, validate_data(data_parsed, game_name_abbr)),
+  tar_target(
+    data_mouse, 
+    validate_raw_parsed(
+      data_parsed, check_used_mouse,
+      out = "used_mouse"
+    )
+  ),
+  tar_target(
+    data_version, 
+    validate_raw_parsed(
+      data_parsed, check_version, 
+      out = "valid_version",
+      name = game_name_abbr
+    )
+  ),
   # configurations
   tar_target(
     config_where_single_game,
