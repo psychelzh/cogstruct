@@ -19,7 +19,7 @@ targets::tar_unscript()
 ```
 
 ```{targets utils, tar_globals=TRUE, include=FALSE}
-check_used_mouse <- function(raw_parsed, ...) {
+check_used_mouse <- function(raw_parsed) {
   if (!has_name(raw_parsed, "device")) {
     return(TRUE)
   }
@@ -28,31 +28,31 @@ check_used_mouse <- function(raw_parsed, ...) {
     str_split("-") |> 
     map_lgl(~ any(.x == "mouse"))
 }
-check_version <- function(raw_parsed, name, ...) {
-  if (name == "LdnTwr") {
+check_version <- function(raw_parsed, game_name) {
+  if (game_name == "各得其所") {
     return(has_name(raw_parsed, "minmove"))
   } 
-  if (name %in% c("Grid2back", "Paint2back", "Digit3back", "Verbal3back")) {
+  if (game_name %in% c("格子卡片", "美术卡片", "数字卡片", "文字卡片")) {
     return(any(raw_parsed$type == "lure"))
   }
   return(TRUE)
 }
-validate_raw_parsed <- function(data_parsed, predicate, out, name = NULL) {
+validate_raw_parsed <- function(data_parsed, games_req_kb) {
   data_parsed |> 
     mutate(
-      "{out}" := map_lgl(
-        raw_parsed,
-        predicate,
-        name = name
+      valid_device = map2_lgl(
+        raw_parsed, game_name,
+        ~ !(check_used_mouse(.x) & .y %in% games_req_kb)
       ),
-      .keep = "unused"
+      valid_version = map2_lgl(
+        raw_parsed, game_name,
+        check_version
+      ),
+      valid = valid_device & valid_version
     )
 }
-clean_indices <- function(indices, games_req_kb, data_version, data_mouse) {
-  validation <- data_mouse |> 
-    mutate(valid_device = !(game_name %in% games_req_kb & used_mouse)) |> 
-    inner_join(data_version) |> 
-    filter(valid_device & valid_version) |> 
+clean_indices <- function(indices) {
+  indices |> 
     left_join(data.iquizoo::game_info, by = c("game_id", "game_name")) |> 
     group_by(user_id, game_name) |> 
     filter(
@@ -62,10 +62,20 @@ clean_indices <- function(indices, games_req_kb, data_version, data_mouse) {
         row_number(desc(game_time)) <= 2
       )
     ) |> 
-    ungroup()
-  indices |> 
-    right_join(validation) |> 
-    unnest(indices) |> 
+    ungroup() |> 
+    mutate(
+      indices_longer = map(
+        indices,
+        ~ pivot_longer(
+          .x,
+          cols = everything(),
+          names_to = "index_name",
+          values_to = "score"
+        )
+      ),
+      .keep = "unused"
+    ) |> 
+    unnest(indices_longer) |> 
     group_by(user_id, game_name_abbr, game_name, index_name) |> 
     mutate(
       occasion = case_when(
@@ -101,23 +111,12 @@ targets_data <- tarchetypes::tar_map(
   tar_target(data, pickup(query_tmpl_data, config_where_single_game)),
   tar_target(data_parsed, wrangle_data(data)),
   tar_target(
+    data_valid, 
+    semi_join(data_parsed, filter(raw_validation, valid))
+  ),
+  tar_target(
     indices,
-    preproc_data(data_parsed, prep_fun, .input = input, .extra = extra)
-  ),
-  tar_target(
-    data_mouse, 
-    validate_raw_parsed(
-      data_parsed, check_used_mouse,
-      out = "used_mouse"
-    )
-  ),
-  tar_target(
-    data_version, 
-    validate_raw_parsed(
-      data_parsed, check_version, 
-      out = "valid_version",
-      name = game_name_abbr
-    )
+    preproc_data(data_valid, prep_fun, .input = input, .extra = extra)
   ),
   # configurations
   tar_target(
@@ -131,14 +130,16 @@ targets_data <- tarchetypes::tar_map(
   tar_target(
     extra,
     config::get("extra", config = game_name_abbr, file = file_config)
-  )
+  ),
+  tar_target(raw_validation, validate_raw_parsed(data_parsed, games_req_kb))
 )
 ```
 
 ```{targets load-config, include=FALSE}
 list(
   tar_target(file_config, "config.yml", format = "file"),
-  tar_target(config_where, config::get("where", file = file_config))
+  tar_target(config_where, config::get("where", file = file_config)),
+  tar_target(games_req_kb, config::get("require_keyboard", file = file_config))
 )
 ```
 
@@ -152,26 +153,12 @@ list(
 ```{targets data-and-scores, include=FALSE}
 list(
   tar_target(query_tmpl_data, fs::path("sql", "data.tmpl.sql"), format = "file"),
-  tar_target(file_keyboard, "config/require_keybord.txt", format = "file"),
-  tar_target(games_req_kb, read_lines(file_keyboard)),
   targets_data,
-  tarchetypes::tar_combine(data, targets_data[[1]]),
   tarchetypes::tar_combine(
-    indices, 
-    targets_data[[3]]
-  ),
-  tarchetypes::tar_combine(
-    data_mouse,
+    indices,
     targets_data[[4]]
   ),
-  tarchetypes::tar_combine(
-    data_version,
-    targets_data[[5]]
-  ),
-  tar_target(
-    indices_clean, 
-    clean_indices(indices, games_req_kb, data_version, data_mouse)
-  )
+  tar_target(indices_clean, clean_indices(indices))
 )
 ```
 

@@ -19,6 +19,22 @@ default:
       field: GradeName
       operator: REGEXP
       values: 2.+级
+  require_keyboard:
+    - 快速归类PRO
+    - 变色魔块PRO
+    - 多彩文字PRO
+    - 卡片分类PRO
+    - 候鸟迁徙PRO
+    - 声调判断
+    - 语义判断
+    - 一心二用PRO
+    - 察颜观色PRO
+    - 太空飞船PRO
+    - 专注大师_中级
+    - 数字卡片
+    - 格子卡片
+    - 美术卡片
+    - 文字卡片
 CRTPro:
   game_name: 快速归类PRO
   prep_fun_name: crt
@@ -179,7 +195,7 @@ DRMA:
   extra: ~
 ProbRL:
   game_name: 强化学习
-  prep_fun_name: countcorrect
+  prep_fun_name: reinf
   input: ~
   extra: ~
 Seman:
@@ -281,7 +297,8 @@ TOJ:
 RP:
   game_name: 节奏感知
   prep_fun_name: staircase
-  input: ~
+  input:
+    name_level: xtime
   extra: ~
 CalcSpdMed:
   game_name: 专注大师_中级
@@ -290,7 +307,7 @@ CalcSpdMed:
   extra: ~
 Dual2back:
   game_name: 眼耳并用
-  prep_fun_name: nback
+  prep_fun_name: dualnback
   input: ~
   extra: ~
 AntiSac:
@@ -343,14 +360,14 @@ RSpan:
   extra: ~
 DirectSrc:
   game_name: 雪花收藏家
-  prep_fun_name: countcorrect
+  prep_fun_name: countcorrect2
   input:
     name_nc: correctnum
     name_ne: falsenum
   extra: ~
-Cook:
+MSynWin:
   game_name: 我是大厨
-  prep_fun_name: countcorrect
+  prep_fun_name: synwin
   input: ~
   extra: ~
 FRB:
