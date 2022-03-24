@@ -10,5 +10,4 @@ editor_options:
 
 Welcome to my research website. Currently, the analysis are as follows:
 
-* [Participants' performance checking for BNU](test_checking_bnu.html).
-* [Participants' performance checking for pilot in SICNU](test_checking_sicnu_pilot.html).
+* [Participants' performance checking](test_checking.html).
