@@ -2,7 +2,7 @@
 title: "Test Performance Checking"
 author: "Liang Zhang"
 date: "`r format(Sys.time(), '%Y-%m-%d')`"
-output: 
+output:
   workflowr::wflow_html:
     code_folding: hide
 editor_options:
@@ -18,9 +18,13 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE, autodep = TRUE)
 ```{r load-data}
 indices_bnu <- withr::with_dir(here::here("bnu"), tar_read(indices_clean))
 indices_sicnu <- withr::with_dir(here::here("sicnu"), tar_read(indices_clean))
-indices_clean <- bind_rows(indices_bnu, indices_sicnu) |> 
-  group_by(game_name) |> 
-  filter(game_version == max(game_version)) |> 
+indices_clean <- bind_rows(
+  bnu = indices_bnu,
+  sicnu = indices_sicnu,
+  .id = "source"
+) |>
+  group_by(game_name) |>
+  filter(game_version == max(game_version)) |>
   ungroup()
 tests_included <- deframe(distinct(indices_clean, game_name_abbr, game_name))
 ```
@@ -39,7 +43,7 @@ purrr::imap_chr(
     game_name_abbr = .x,
     game_name = .y
   )
-) |> 
-  str_c(collapse = "\n\n") |> 
+) |>
+  str_c(collapse = "\n\n") |>
   cat()
 ```
