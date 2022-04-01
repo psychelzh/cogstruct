@@ -94,6 +94,46 @@ clean_indices <- function(indices) {
       values_from = score
     )
 }
+clean_indices_halves <- function(indices) {
+  indices |> 
+    left_join(data.iquizoo::game_info, by = c("game_id", "game_name")) |> 
+    group_by(user_id, game_name) |> 
+    filter(
+      if_else(
+        str_detect(game_name_abbr, "[A|B]$"), 
+        row_number(desc(game_time)) == 1,
+        row_number(desc(game_time)) <= 2
+      )
+    ) |> 
+    ungroup() |> 
+    mutate(
+      indices_longer = map(
+        indices,
+        ~ pivot_longer(
+          .x,
+          cols = everything(),
+          names_to = "index_name",
+          values_to = "score"
+        )
+      ),
+      .keep = "unused"
+    ) |> 
+    unnest(indices_longer) |> 
+    group_by(user_id, game_name_abbr, game_name, index_name) |> 
+    mutate(
+      occasion = recode_factor(
+        row_number(game_time),
+        `1` = "test",
+        `2` = "retest"
+      )
+    ) |> 
+    ungroup() |> 
+    pivot_wider(
+      id_cols = c(user_id, game_name, game_name_abbr, game_version, index_name), 
+      names_from = occasion,
+      values_from = score
+    )
+}
 ```
 
 ```{targets set-globals, tar_globals=TRUE, include=FALSE}
@@ -111,25 +151,35 @@ targets_data <- tarchetypes::tar_map(
   tar_target(data, pickup(query_tmpl_data, config_where_single_game)),
   tar_target(data_parsed, wrangle_data(data)),
   tar_target(
-    data_valid, 
+    data_valid,
     semi_join(data_parsed, filter(raw_validation, valid))
   ),
   tar_target(
     indices,
     preproc_data(data_valid, prep_fun, .input = input, .extra = extra)
   ),
+  tar_target(
+    data_valid_even,
+    data_valid |>
+      mutate(raw_parsed = map(raw_parsed, ~ slice(., seq(2, n(), 2))))
+  ),
+  tar_target(
+    data_valid_odd,
+    data_valid |>
+      mutate(raw_parsed = map(raw_parsed, ~ slice(., seq(1, n(), 2))))
+  ),
+  tar_target(
+    indices_even,
+    preproc_data(data_valid_even, prep_fun, .input = input, .extra = extra)
+  ),
+  tar_target(
+    indices_odd,
+    preproc_data(data_valid_odd, prep_fun, .input = input, .extra = extra)
+  ),
   # configurations
   tar_target(
     config_where_single_game,
     insert_where_single_game(config_where, game_id)
-  ),
-  tar_target(
-    input,
-    config::get("input", config = game_name_abbr, file = file_config)
-  ),
-  tar_target(
-    extra,
-    config::get("extra", config = game_name_abbr, file = file_config)
   ),
   tar_target(raw_validation, validate_raw_parsed(data_parsed, games_req_kb))
 )
@@ -155,13 +205,27 @@ list(
   tar_target(query_tmpl_data, fs::path("sql", "data.tmpl.sql"), format = "file"),
   targets_data,
   tarchetypes::tar_combine(
+    data_valid,
+    targets_data[[3]]
+  ),
+  tarchetypes::tar_combine(
     indices,
     targets_data[[4]]
   ),
-  tar_target(indices_clean, clean_indices(indices))
+  tarchetypes::tar_combine(
+    indices_even,
+    targets_data[[7]]
+  ),
+  tarchetypes::tar_combine(
+    indices_odd,
+    targets_data[[8]]
+  ),
+  tar_target(indices_clean, clean_indices(indices)),
+  tar_target(indices_clean_even, clean_indices_halves(indices_even)),
+  tar_target(indices_clean_odd, clean_indices_halves(indices_odd))
 )
 ```
 
 ```{r run-pipeline, include=FALSE}
-tar_make_future(workers = 40)
+tar_make_future(workers = 20)
 ```
