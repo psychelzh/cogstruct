@@ -61,7 +61,7 @@ clean_indices <- function(indices) {
       .keep = "unused"
     ) |> 
     unnest(indices_longer) |> 
-    group_by(user_id, game_name_abbr, game_name, index_name) |> 
+    group_by(user_id, game_name_abbr, game_name, game_version, index_name) |> 
     mutate(
       occasion = case_when(
         str_detect(game_name_abbr, "A$") ~ "test",
@@ -104,7 +104,7 @@ clean_indices_halves <- function(indices) {
       .keep = "unused"
     ) |> 
     unnest(indices_longer) |> 
-    group_by(user_id, game_name_abbr, game_name, index_name) |> 
+    group_by(user_id, game_name_abbr, game_name, game_version, index_name) |> 
     mutate(
       occasion = recode_factor(
         row_number(game_time),
@@ -212,5 +212,5 @@ list(
 ```
 
 ```{r run-pipeline, include=FALSE}
-tar_make_future(workers = 40)
+tar_make_future(workers = 20)
 ```
