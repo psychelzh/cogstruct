@@ -1,50 +1,39 @@
 library(targets)
 future::plan(future.callr::callr)
-tar_option_set(packages = "tidyverse")
+tar_option_set(packages = "tidyverse", format = "qs")
 list(
   tar_target(
     exclude_bnu,
     c("数字推理", "文字推理", "数字推理A", "数字推理B", "文字推理A", "文字推理B")
   ),
-  tar_target(
-    file_data_valid_bnu,
-    "bnu/_targets/objects/data_valid",
-    format = "file"
+  tarchetypes::tar_file_read(
+    users,
+    "preproc/_targets/objects/users",
+    qs::qread(!!.x)
   ),
   tar_target(
-    file_data_valid_sicnu,
-    "sicnu/_targets/objects/data_valid",
+    file_data_valid,
+    "preproc/_targets/objects/data_valid",
     format = "file"
   ),
   tar_target(
     data_raw,
-    bind_rows(
-      bnu = qs::qread(file_data_valid_bnu),
-      sicnu = qs::qread(file_data_valid_sicnu),
-      .id = "source"
-    ) |>
+    qs::qread(file_data_valid) |>
       group_by(game_name) |>
       filter(game_version == max(game_version)) |>
       ungroup()
   ),
   tar_target(
-    file_indices_bnu,
-    "bnu/_targets/objects/indices_clean",
-    format = "file"
-  ),
-  tar_target(
-    file_indices_sicnu,
-    "sicnu/_targets/objects/indices_clean",
+    file_indices,
+    "preproc/_targets/objects/indices_clean",
     format = "file"
   ),
   tar_target(
     indices_clean,
-    bind_rows(
-      bnu = qs::qread(file_indices_bnu),
-      sicnu = qs::qread(file_indices_sicnu),
-      .id = "source"
-    ) |>
-      filter(!(game_name %in% exclude_bnu & source == "bnu")) |>
+    qs::qread(file_indices) |>
+      left_join(users, by = "user_id") |>
+      filter(!(game_name %in% exclude_bnu &
+                 school == "北京师范大学认知实验")) |>
       group_by(game_name) |>
       filter(game_version == max(game_version)) |>
       ungroup() |>
@@ -58,43 +47,25 @@ list(
       ungroup()
   ),
   tar_target(
-    file_indices_even_bnu,
-    "bnu/_targets/objects/indices_clean_even",
-    format = "file"
-  ),
-  tar_target(
-    file_indices_even_sicnu,
-    "sicnu/_targets/objects/indices_clean_even",
+    file_indices_even,
+    "preproc/_targets/objects/indices_clean_even",
     format = "file"
   ),
   tar_target(
     indices_even,
-    bind_rows(
-      bnu = qs::qread(file_indices_even_bnu),
-      sicnu = qs::qread(file_indices_even_sicnu),
-      .id = "source"
-    ) |>
+    qs::qread(file_indices_even) |>
       group_by(game_name) |>
       filter(game_version == max(game_version)) |>
       ungroup()
   ),
   tar_target(
-    file_indices_odd_bnu,
-    "bnu/_targets/objects/indices_clean_odd",
-    format = "file"
-  ),
-  tar_target(
-    file_indices_odd_sicnu,
-    "sicnu/_targets/objects/indices_clean_odd",
+    file_indices_odd,
+    "preproc/_targets/objects/indices_clean_odd",
     format = "file"
   ),
   tar_target(
     indices_odd,
-    bind_rows(
-      bnu = qs::qread(file_indices_odd_bnu),
-      sicnu = qs::qread(file_indices_odd_sicnu),
-      .id = "source"
-    ) |>
+    qs::qread(file_indices_odd) |>
       group_by(game_name) |>
       filter(game_version == max(game_version)) |>
       ungroup()
@@ -139,7 +110,9 @@ list(
     data_raw |>
       semi_join(filter(config_ic, method == "alpha"), by = "game_name") |>
       # BNU source data were incorrect for these games
-      filter(!(game_name %in% exclude_bnu & source == "bnu")) |>
+      left_join(users, by = "user_id") |>
+      filter(!(game_name %in% exclude_bnu &
+                 school == "北京师范大学认知实验")) |>
       # data from the last time of each test is deemed the right one
       left_join(data.iquizoo::game_info, by = c("game_id", "game_name")) |>
       group_by(user_id, game_name, game_version) |>
@@ -207,8 +180,65 @@ list(
       ungroup()
   ),
   tar_target(
+    reliability_test_retest_odd,
+    indices_odd |>
+      left_join(users, by = "user_id") |>
+      filter(!(game_name %in% exclude_bnu &
+                 school == "北京师范大学认知实验")) |>
+      filter(if_all(contains("test"), is.finite)) |>
+      group_by(game_name, game_name_abbr, game_version, index_name) |>
+      mutate(
+        data.frame(test = test, retest = retest) |>
+          performance::check_outliers(method = "mahalanobis") |>
+          as_tibble()
+      ) |>
+      group_modify(
+        ~ tibble(
+          icc_odd_half = .x |>
+            filter(!Outlier) |>
+            select(contains("test")) |>
+            psych::ICC() |>
+            pluck("results", "ICC", 2),
+          r_odd_half = with(
+            subset(.x, !Outlier),
+            cor(test, retest)
+          )
+        )
+      ) |>
+      ungroup()
+  ),
+  tar_target(
+    retest_change,
+    indices_clean |>
+      group_by(game_name, game_name_abbr, game_version, index_name) |>
+      group_modify(
+        ~ tibble(
+          avg_test = mean(.x$test[!.x$Outlier], na.rm = TRUE),
+          avg_retest = mean(.x$retest[!.x$Outlier], na.rm = TRUE),
+          retest_change = .x |>
+            filter(!Outlier) |>
+            summarise(t.test(retest, test, paired = TRUE) |> broom::tidy()) |>
+            rstatix::p_format() |>
+            rstatix::p_mark_significant() |>
+            mutate(
+              summary_msg = str_glue("{round(estimate, 3)}({p.value})")
+            ) |>
+            pull(summary_msg)
+        )
+      ) |>
+      ungroup()
+  ),
+  tar_target(
     reliability,
     reliability_test_retest |>
+      full_join(
+        reliability_test_retest_odd,
+        by = c("game_name", "game_name_abbr", "game_version", "index_name")
+      ) |>
+      full_join(
+        retest_change,
+        by = c("game_name", "game_name_abbr", "game_version", "index_name")
+      ) |>
       full_join(
         bind_rows(reliability_split_half, reliability_alpha) |>
           mutate(index_name = coalesce(index_name, "nc")),
@@ -216,5 +246,12 @@ list(
       ) |>
       mutate(game_name_origin = coalesce(game_name_origin, game_name)) |>
       select(game_name_origin, everything())
+  ),
+  tar_target(
+    file_reliability, {
+      file_name <- "output/reliability.xlsx"
+      writexl::write_xlsx(reliability, file_name)
+      file_name
+    }
   )
 )
